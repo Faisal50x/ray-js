@@ -23,6 +23,22 @@ const providers = [
 ]
 ```
 
+## Example 
+
+```js
+  const Ray = use('@faisal50x/ray');
+
+  Ray("Yahoooo it's working.").color('green');
+  
+  Ray().toJson({
+    appName: "Adonis Ray",
+    appVersion: "0.0.1",
+    author: "Faisal Ahmed",
+    credit: "Spatie"
+  });
+  
+```
+
 ## Contributing
 
 Please see [CONTRIBUTING](.github/CONTRIBUTING.md) for details.
