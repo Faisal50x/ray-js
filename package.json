@@ -1,6 +1,6 @@
 {
   "name": "@faisal50x/ray",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "keywords": ["ray js", "ray", "spatie ray"],
   "description": "Debug with Ray to fix problems faster",
   "main": "build/index.js",
@@ -12,10 +12,6 @@
     "clean": "rm -rf build && mkdir build",
     "build": "npm run clean && babel src -d ./build"
   },
-  "files": [
-    "build",
-    "providers"
-  ],
   "dependencies": {
     "axios": "^0.21.1",
     "uuid": "^8.3.2"
