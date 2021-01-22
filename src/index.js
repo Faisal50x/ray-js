@@ -1,15 +1,16 @@
-import axios from 'axios'
-import { v4 as uuidv4 } from 'uuid'
-import ColorPayload from './payloads/ColorPayload'
-import HidePayload from './payloads/HidePayload'
-import LogPayload from './payloads/LogPayload'
-import NewScreenPayload from './payloads/NewScreenPayload'
-import RemovePayload from './payloads/RemovePayload'
-import SizePayload from './payloads/SizePayload'
-import NotifyPayload from './payloads/NotifyPayload'
-import CustomPayload from './payloads/CustomPayload'
+import axios from 'axios';
+import { v4 as uuidv4 } from 'uuid';
+import ColorPayload from './payloads/ColorPayload';
+import HidePayload from './payloads/HidePayload';
+import LogPayload from './payloads/LogPayload';
+import NewScreenPayload from './payloads/NewScreenPayload';
+import RemovePayload from './payloads/RemovePayload';
+import SizePayload from './payloads/SizePayload';
+import NotifyPayload from './payloads/NotifyPayload';
+import CustomPayload from './payloads/CustomPayload';
+import JsonStringPayload from './payloads/JsonStringPayload';
 
-class Ray {
+export default class Ray {
     static client
 
     constructor(host = '127.0.0.1', port = 23517) {
@@ -95,6 +96,14 @@ class Ray {
         return this.send('🎶 🎹 🎷 🕺')
     }
 
+    toJson(...values){
+        if (values.length === 0) return this;
+
+        this.sendRequest(JsonStringPayload(...values));
+
+        return this;
+    }
+
     send(...values) {
         if (values.length == 0) return this
 
@@ -131,6 +140,3 @@ class Ray {
     }
 }
 
-export const ray = (...args) => new Ray().send(...args)
-
-export default Ray

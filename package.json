@@ -1,14 +1,30 @@
 {
-  "name": "js-ray",
+  "name": "@faisal50x/ray",
   "version": "0.0.1",
+  "keywords": ["ray js", "ray", "spatie ray"],
   "description": "Debug with Ray to fix problems faster",
-  "main": "src/index.js",
-  "repository": "https://github.com/m1guelpf/ray-js",
-  "author": "Miguel Piedrafita",
+  "main": "build/index.js",
+  "repository": "https://github.com/Faisal50x/ray-js",
+  "author": "Faisal Ahmed",
   "license": "MIT",
   "private": false,
+  "scripts": {
+    "clean": "rm -rf build && mkdir build",
+    "build": "npm run clean && babel src -d ./build"
+  },
+  "files": [
+    "providers/RayProvider.js"
+  ],
   "dependencies": {
     "axios": "^0.21.1",
     "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@adonisjs/fold": "^4.0.9",
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/node": "^7.12.10",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/preset-env": "^7.12.11"
   }
 }
