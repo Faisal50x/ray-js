@@ -1,6 +1,6 @@
 {
   "name": "@faisal50x/ray",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "keywords": ["ray js", "ray", "spatie ray"],
   "description": "Debug with Ray to fix problems faster",
   "main": "build/index.js",
