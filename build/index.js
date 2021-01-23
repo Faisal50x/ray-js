@@ -29,6 +29,8 @@ var _JsonStringPayload = _interopRequireDefault(require("./payloads/JsonStringPa
 
 var _PayloadFactory = _interopRequireDefault(require("./PayloadFactory"));
 
+var _TablePayload = _interopRequireDefault(require("./payloads/TablePayload"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
@@ -144,6 +146,14 @@ var Ray = /*#__PURE__*/function () {
     key: "charles",
     value: function charles() {
       return this.send('🎶 🎹 🎷 🕺');
+    }
+  }, {
+    key: "table",
+    value: function table(values) {
+      var label = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'Table';
+      if (values.length === 0) return this;
+      this.sendRequest((0, _TablePayload["default"])(values, label));
+      return this;
     }
   }, {
     key: "toJson",

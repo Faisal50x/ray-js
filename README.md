@@ -30,11 +30,19 @@ const providers = [
 
   Ray("Yahoooo it's working.").color('green');
   
+  //JSON
   Ray().toJson({
     appName: "Adonis Ray",
     appVersion: "0.0.1",
     author: "Faisal Ahmed",
     credit: "Spatie"
+  });
+  
+  //Table
+  Ray().table({
+    "node_version": "15.0",
+    "adonis_version": "4.1",
+    "os": "MacOS 11.1"
   });
   
 ```

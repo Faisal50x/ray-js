@@ -10,6 +10,7 @@ import NotifyPayload from './payloads/NotifyPayload';
 import CustomPayload from './payloads/CustomPayload';
 import JsonStringPayload from './payloads/JsonStringPayload';
 import PayloadFactory from "./PayloadFactory";
+import TablePayload from "./payloads/TablePayload";
 
 export default class Ray {
     static client
@@ -95,6 +96,13 @@ export default class Ray {
 
     charles() {
         return this.send('🎶 🎹 🎷 🕺')
+    }
+
+    table(values, label = 'Table') {
+
+        this.sendRequest(TablePayload(values, label))
+
+        return this;
     }
 
     toJson(...values){
