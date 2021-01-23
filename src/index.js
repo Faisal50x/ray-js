@@ -9,6 +9,7 @@ import SizePayload from './payloads/SizePayload';
 import NotifyPayload from './payloads/NotifyPayload';
 import CustomPayload from './payloads/CustomPayload';
 import JsonStringPayload from './payloads/JsonStringPayload';
+import PayloadFactory from "./PayloadFactory";
 
 export default class Ray {
     static client
@@ -105,9 +106,9 @@ export default class Ray {
     }
 
     send(...values) {
-        if (values.length == 0) return this
-
-        this.sendRequest(LogPayload(...values))
+        if (values.length === 0) return this
+        const payloads = PayloadFactory.createForValues(values);
+        this.sendRequest(...payloads);
 
         return this
     }

@@ -27,7 +27,21 @@ var _CustomPayload = _interopRequireDefault(require("./payloads/CustomPayload"))
 
 var _JsonStringPayload = _interopRequireDefault(require("./payloads/JsonStringPayload"));
 
+var _PayloadFactory = _interopRequireDefault(require("./PayloadFactory"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -141,8 +155,15 @@ var Ray = /*#__PURE__*/function () {
   }, {
     key: "send",
     value: function send() {
-      if (arguments.length == 0) return this;
-      this.sendRequest(_LogPayload["default"].apply(void 0, arguments));
+      for (var _len = arguments.length, values = new Array(_len), _key = 0; _key < _len; _key++) {
+        values[_key] = arguments[_key];
+      }
+
+      if (values.length === 0) return this;
+
+      var payloads = _PayloadFactory["default"].createForValues(values);
+
+      this.sendRequest.apply(this, _toConsumableArray(payloads));
       return this;
     }
   }, {
@@ -161,8 +182,8 @@ var Ray = /*#__PURE__*/function () {
   }, {
     key: "sendRequest",
     value: function sendRequest() {
-      for (var _len = arguments.length, payloads = new Array(_len), _key = 0; _key < _len; _key++) {
-        payloads[_key] = arguments[_key];
+      for (var _len2 = arguments.length, payloads = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+        payloads[_key2] = arguments[_key2];
       }
 
       this.client.post('/', {
@@ -182,7 +203,6 @@ var Ray = /*#__PURE__*/function () {
   return Ray;
 }();
 
-_defineProperty(Ray, "client", void 0);
+exports["default"] = Ray;
 
-var _default = Ray;
-exports["default"] = _default;
+_defineProperty(Ray, "client", void 0);
