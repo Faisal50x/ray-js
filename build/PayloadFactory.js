@@ -5,9 +5,13 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 
-var _CustomPayload = _interopRequireDefault(require("./payloads/CustomPayload"));
+var _dayjs = _interopRequireDefault(require("dayjs"));
 
 var _LogPayload = _interopRequireDefault(require("./payloads/LogPayload"));
+
+var _CustomPayload = _interopRequireDefault(require("./payloads/CustomPayload"));
+
+var _DayjsPayload = _interopRequireDefault(require("./payloads/DayjsPayload"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -48,6 +52,12 @@ var PayloadFactory = /*#__PURE__*/function () {
 
       if (typeof value == 'boolean') {
         return (0, _CustomPayload["default"])(value, 'Boolean');
+      }
+
+      var dayJs = (0, _dayjs["default"])(value);
+
+      if (dayJs.isValid()) {
+        return (0, _DayjsPayload["default"])(value);
       }
 
       if (!Array.isArray(value) && _typeof(value) == 'object') {

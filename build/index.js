@@ -151,7 +151,6 @@ var Ray = /*#__PURE__*/function () {
     key: "table",
     value: function table(values) {
       var label = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'Table';
-      if (values.length === 0) return this;
       this.sendRequest((0, _TablePayload["default"])(values, label));
       return this;
     }

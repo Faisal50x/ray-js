@@ -1,5 +1,7 @@
-import CustomPayload from "./payloads/CustomPayload";
+import dayjs from 'dayjs';
 import LogPayload from "./payloads/LogPayload";
+import CustomPayload from "./payloads/CustomPayload";
+import DayjsPayload from "./payloads/DayjsPayload";
 
 export default class PayloadFactory {
 
@@ -26,10 +28,16 @@ export default class PayloadFactory {
         if(typeof value == 'boolean') {
             return CustomPayload(value, 'Boolean');
         }
+        const dayJs = dayjs(value);
+
+        if (dayJs.isValid()) {
+            return DayjsPayload(value);
+        }
 
         if(!Array.isArray(value) && typeof value == 'object') {
             return CustomPayload(value, "Object");
         }
+
 
         return LogPayload(value);
     }
